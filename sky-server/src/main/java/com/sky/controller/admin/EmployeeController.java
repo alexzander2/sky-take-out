@@ -92,5 +92,12 @@ public class EmployeeController {
         return Result.success(pageResult);
 
     }
+    @PostMapping("status/{status}")
+    @ApiOperation("启用/禁用账号")
+    public Result startOrStop(@PathVariable Integer status, Long id){
+        log.info("修改id为"+ id +"的员工状态");
+        employeeService.startOrStop(status,id);
+        return Result.success();
+    }
 
 }
